@@ -43,10 +43,10 @@ namespace ceres_ext {
         }
         
         virtual bool ComputeJacobian(const double* x, double* jacobian) const {
-                jacobian[0] =  x[3]; jacobian[1]  =  x[1]; jacobian[2]  = -x[1];  // NOLINT
-                jacobian[3] = -x[2]; jacobian[4]  =  x[3]; jacobian[5]  =  x[0];  // NOLINT
-                jacobian[6] =  x[1]; jacobian[7] = -x[0]; jacobian[8] =  x[3];  // NOLINT
-                jacobian[9] = -x[0]; jacobian[10]  = -x[11]; jacobian[2]  = -x[2];  // NOLINT
+                jacobian[0] =  x[3]; jacobian[1]  =  x[2]; jacobian[2]   = -x[1];  // NOLINT x
+            jacobian[3] = -x[2]; jacobian[4]  =  x[3]; jacobian[5]   =  x[0];  // NOLINT y
+            jacobian[6] =  x[1]; jacobian[7]  = -x[0]; jacobian[8]   =  x[3];  // NOLINT z
+            jacobian[9] = -x[0]; jacobian[10] = -x[1]; jacobian[11] = -x[2];  // NOLINT w
                 return true;
         }
         
