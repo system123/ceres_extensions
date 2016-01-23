@@ -12,6 +12,7 @@
 
 #include "Eigen/Core"
 #include <ceres/local_parameterization.h>
+#include <ceres/rotation.h>
 
 namespace ceres_ext {
     
