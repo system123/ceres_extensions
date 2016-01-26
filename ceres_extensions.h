@@ -12,6 +12,7 @@
 
 #include "Eigen/Core"
 #include <ceres/local_parameterization.h>
+#include <ceres/rotation.h>
 
 namespace ceres_ext {
     
@@ -62,7 +63,7 @@ namespace ceres_ext {
     
     template <typename T, int row_stride, int col_stride> inline
     void EigenQuaternionToScaledRotation(const T q[4],
-                                    const MatrixAdapter<T, row_stride, col_stride>& R) {
+					 const ceres::MatrixAdapter<T, row_stride, col_stride>& R) {
         // Make convenient names for elements of q.
         T a = q[3];
         T b = q[0];
@@ -93,7 +94,7 @@ namespace ceres_ext {
     
     template <typename T, int row_stride, int col_stride> inline
     void EigenQuaternionToRotation(const T q[4],
-                              const MatrixAdapter<T, row_stride, col_stride>& R) {
+				   const ceres::MatrixAdapter<T, row_stride, col_stride>& R) {
         EigenQuaternionToScaledRotation(q, R);
         
         T normalizer = q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3];
